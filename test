@@ -1,0 +1,46 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include"game.h"
+void menu()
+{
+
+	printf("*****************\n");
+	printf("***1- 开始游戏***\n");
+	printf("***0 - 结束游戏**\n");
+	printf("*****************\n");
+}
+void game()
+{
+	char mine[ROWS][COLS];
+	char show[ROWS][COLS];
+	InitBoard(show,ROWS,COLS,'*');
+	InitBoard(mine, ROWS, COLS, '0');
+	DisplayBoard(show, ROW ,COL);
+	SetMine(mine, ROW, COL);
+	FindMine( mine, show,ROW,COL);
+}
+int main()
+{
+	int a = 0;
+	do
+	{
+		srand((unsigned int)time(NULL));
+		menu();
+		scanf("%d", &a);
+
+		switch (a)
+		{
+		case 1:
+			game();
+			break;
+		case 0:
+			printf("结束");
+			break;
+		default:
+			printf("结束");
+			a = 0;
+			break;
+
+		}
+	} while (a);
+	return 0;
+}
